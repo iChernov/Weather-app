@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Weather in ..."; ObjectID = "1j0-op-eIN"; */
+"1j0-op-eIN.text" = "Weather in ...";
+
+/* Class = "UILabel"; text = "explanationLabel"; ObjectID = "2J2-V4-IKL"; */
+"2J2-V4-IKL.text" = "explanationLabel";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "SaA-Ef-0Iy"; */
+"SaA-Ef-0Iy.text" = "Settings";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "UkK-Wy-eKm"; */
+"UkK-Wy-eKm.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "isZ-Xl-f08"; */
+"isZ-Xl-f08.normalTitle" = "Submit";
+
+/* Class = "UITextField"; placeholder = "please enter city name here"; ObjectID = "wnZ-bn-RLR"; */
+"wnZ-bn-RLR.placeholder" = "please enter city name here";
