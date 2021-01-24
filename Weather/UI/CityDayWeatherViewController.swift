@@ -12,7 +12,7 @@ class CityDayWeatherViewController: UIViewController {
     // UI
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dataSourceSwitchLabel: UILabel!
-    @IBOutlet weak var switchLabel: UISwitch!
+    @IBOutlet weak var dataSourceSwitch: UISwitch!
     @IBOutlet weak var settingsButton: UIButton!
     
     // internal variables
@@ -22,6 +22,13 @@ class CityDayWeatherViewController: UIViewController {
         super.viewDidLoad()
         
         settingsButton.setTitle(NSLocalizedString("mainScreen.settingsButton.title", comment: ""), for: .normal)
+        dataSourceSwitchLabel.text = NSLocalizedString("mainScreen.dataSourceSwitch.title", comment: "")
+    }
+        
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if let city = SettingsStorage.loadCity() {
             titleLabel.text = NSLocalizedString("mainScreen.title", comment: "") + city.name
             requestWeatherData(for: city)
@@ -39,9 +46,9 @@ class CityDayWeatherViewController: UIViewController {
         performSegue(withIdentifier: "settingsSegue", sender: self)
     }
     
-    
     // Internal methods
     private func requestWeatherData(for city: City) {
         
     }
 }
+
