@@ -8,18 +8,18 @@
 import Foundation
 
 class SettingsStorage {
-    class func loadCity() -> City? {
+    class func loadCity() -> UserCity? {
         let defaults = UserDefaults.standard
         if let cityData = defaults.object(forKey: "SavedCity") as? Data {
             let decoder = JSONDecoder()
-            if let loadedCity = try? decoder.decode(City.self, from: cityData) {
+            if let loadedCity = try? decoder.decode(UserCity.self, from: cityData) {
                 return loadedCity
             }
         }
         return nil
     }
     
-    class func saveCity(city: City) {
+    class func saveCity(city: UserCity) {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(city) {
             let defaults = UserDefaults.standard

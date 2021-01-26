@@ -114,13 +114,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="please enter city name here" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="wnZ-bn-RLR">
-                                <rect key="frame" x="30" y="118" width="354" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="20" y="118" width="374" height="39.5"/>
+                                <color key="backgroundColor" red="0.42901048060000002" green="0.70621639489999999" blue="0.86668950320000004" alpha="0.098092526805644134" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="57g-8d-FD4" id="fsn-4Z-5iF"/>
                                 </connections>
                             </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW8-fM-jp2">
+                                <rect key="frame" x="93" y="172.5" width="228" height="30"/>
+                                <state key="normal" title="Determine closest city using GPS"/>
+                                <connections>
+                                    <action selector="detectClosestCity:" destination="57g-8d-FD4" eventType="touchUpInside" id="UUk-lV-Tgu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jSp-Ya-Bix"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -128,11 +136,13 @@
                             <constraint firstItem="SaA-Ef-0Iy" firstAttribute="top" secondItem="jSp-Ya-Bix" secondAttribute="top" constant="25" id="1oc-qg-Ng4"/>
                             <constraint firstItem="isZ-Xl-f08" firstAttribute="leading" secondItem="jSp-Ya-Bix" secondAttribute="leading" constant="15" id="Muc-iG-sLZ"/>
                             <constraint firstItem="jSp-Ya-Bix" firstAttribute="trailing" secondItem="isZ-Xl-f08" secondAttribute="trailing" constant="15" id="Ng8-4o-NRd"/>
-                            <constraint firstItem="wnZ-bn-RLR" firstAttribute="leading" secondItem="jSp-Ya-Bix" secondAttribute="leading" constant="30" id="Nn6-fJ-5ds"/>
+                            <constraint firstItem="wnZ-bn-RLR" firstAttribute="leading" secondItem="jSp-Ya-Bix" secondAttribute="leading" constant="20" id="Nn6-fJ-5ds"/>
+                            <constraint firstItem="yW8-fM-jp2" firstAttribute="centerX" secondItem="lvA-nZ-A6R" secondAttribute="centerX" id="NpB-OA-BHK"/>
                             <constraint firstItem="SaA-Ef-0Iy" firstAttribute="centerX" secondItem="lvA-nZ-A6R" secondAttribute="centerX" id="Tle-al-fMq"/>
                             <constraint firstItem="2J2-V4-IKL" firstAttribute="top" secondItem="SaA-Ef-0Iy" secondAttribute="bottom" constant="25" id="bYU-gW-N7d"/>
+                            <constraint firstItem="yW8-fM-jp2" firstAttribute="top" secondItem="wnZ-bn-RLR" secondAttribute="bottom" constant="15" id="g0M-XA-em0"/>
                             <constraint firstItem="jSp-Ya-Bix" firstAttribute="bottom" secondItem="isZ-Xl-f08" secondAttribute="bottom" constant="25" id="kQ5-Y5-Zne"/>
-                            <constraint firstItem="jSp-Ya-Bix" firstAttribute="trailing" secondItem="wnZ-bn-RLR" secondAttribute="trailing" constant="30" id="n0u-fc-PYN"/>
+                            <constraint firstItem="jSp-Ya-Bix" firstAttribute="trailing" secondItem="wnZ-bn-RLR" secondAttribute="trailing" constant="20" id="n0u-fc-PYN"/>
                             <constraint firstItem="2J2-V4-IKL" firstAttribute="leading" secondItem="jSp-Ya-Bix" secondAttribute="leading" constant="15" id="qmq-2S-eYz"/>
                             <constraint firstItem="wnZ-bn-RLR" firstAttribute="top" secondItem="2J2-V4-IKL" secondAttribute="bottom" constant="15" id="tcf-BC-mam"/>
                             <constraint firstItem="jSp-Ya-Bix" firstAttribute="trailing" secondItem="2J2-V4-IKL" secondAttribute="trailing" constant="15" id="wqL-Z8-l8n"/>

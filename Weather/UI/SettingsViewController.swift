@@ -43,6 +43,12 @@ class SettingsViewController: UIViewController {
         submitButton.setTitle(NSLocalizedString("settings.submitButton.title", comment: ""), for: .normal)
     }
     
+    @IBAction func detectClosestCity(_ sender: Any) {
+        // not required in task - not released in this solution
+        // but in general - it is a good idea to suggest a city
+        // based on user's location
+    }
+    
     private func refreshSubmitButton() {
         let shouldBeEnabled = (cityNameField.text?.count ?? 0) > 0
         submitButton.isEnabled = shouldBeEnabled
@@ -57,8 +63,11 @@ class SettingsViewController: UIViewController {
     }
     
     private func saveSettings() {
-        if let enteredCityName = cityNameField.text as? String {
-            SettingsStorage.saveCity(city: City(name: enteredCityName))
+        if var enteredCityName = cityNameField.text as? String {
+            while enteredCityName.last?.isWhitespace == true {
+                enteredCityName = String(enteredCityName.dropLast())
+            }
+            SettingsStorage.saveCity(city: UserCity(name: enteredCityName))
         }
     }
 }

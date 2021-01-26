@@ -16,7 +16,7 @@ class CityDayWeatherViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
     
     // internal variables
-    
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,16 @@ class CityDayWeatherViewController: UIViewController {
         dataSourceSwitchLabel.text = NSLocalizedString("mainScreen.dataSourceSwitch.title", comment: "")
     }
         
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if let city = SettingsStorage.loadCity() {
             titleLabel.text = NSLocalizedString("mainScreen.title", comment: "") + city.name
-            requestWeatherData(for: city)
+            WeatherDataManager().fetchWeather(for: city) { [weak self] weatherData in
+                if let data = weatherData {
+                    self?.visualise(data)
+                }
+            }
         } else {
             performSegue(withIdentifier: "settingsSegue", sender: self)
         }
@@ -45,10 +48,10 @@ class CityDayWeatherViewController: UIViewController {
     @IBAction func goToSettings(_ sender: Any) {
         performSegue(withIdentifier: "settingsSegue", sender: self)
     }
-    
+
     // Internal methods
-    private func requestWeatherData(for city: City) {
-        
+    func visualise(_ weatherData: WeatherData) {
+        reloadTable()
     }
 }
 

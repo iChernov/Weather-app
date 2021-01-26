@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct City: Codable {
+struct UserCity: Codable {
     var name: String
+    // could be extended with coordinates, i.e.
 }
