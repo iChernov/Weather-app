@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CityPresenting: class {
-    func setNewCity(_ cityName: String)
+    func reloadCity()
 }
 
 class SettingsViewController: UIViewController {
@@ -20,7 +20,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     // internal variables
     fileprivate var _selectedCityName: String = ""
-    
+    weak var delegate: CityPresenting?
+
     // life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +34,21 @@ class SettingsViewController: UIViewController {
     // User interactions
     @IBAction func submitSettings(_ sender: Any) {
         saveSettings()
+        delegate?.reloadCity()
         dismiss(animated: true, completion: nil)
-    }
-    
-    // private methods
-    private func setTexts() {
-        titleLabel.text = NSLocalizedString("settings.title", comment: "The top title of the settings screen")
-        explanationLabel.text = NSLocalizedString("settings.explanation", comment: "Explanation regarding why and how user should enter new city name")
-        submitButton.setTitle(NSLocalizedString("settings.submitButton.title", comment: ""), for: .normal)
     }
     
     @IBAction func detectClosestCity(_ sender: Any) {
         // not required in task - not released in this solution
         // but in general - it is a good idea to suggest a city
         // based on user's location
+    }
+    
+    // private methods
+    private func setTexts() {
+        titleLabel.text = "settings.title".localized
+        explanationLabel.text = "settings.explanation".localized
+        submitButton.setTitle("settings.submitButton.title".localized, for: .normal)
     }
     
     private func refreshSubmitButton() {

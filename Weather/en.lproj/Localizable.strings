@@ -5,6 +5,7 @@
   Created by IVAN CHERNOV on 24.01.21.
   
 */
+"OK"                                = "OK";
 
 /// Main weather screen
 "mainScreen.title"                  = "Weather for ";
@@ -15,3 +16,7 @@
 "settings.title"                    = "Settings";
 "settings.explanation"              = "To see the weather for a concrete city - please enter the city name in the text field below. Please check that city name is entered without spelling mistakes!";
 "settings.submitButton.title"       = "Submit";
+
+/// Errors
+"generalFailure.title"              = "Weather loading failed";
+"generalFailure.message"            = "Please check your connection or try again later";

@@ -6,14 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 class WeatherDataManager {
     static fileprivate let apiKey: String = "29d458fa0f12cf490759b24728e13689"
-    //http://api.openweathermap.org/data/2.5/forecast?q=munich&appid=29d458fa0f12cf490759b24728e13689
-    
-    func fetchWeather(for city: UserCity, completionHandler: @escaping (WeatherData?) -> Void) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=munich&appid=\(WeatherDataManager.apiKey)") else {
-            completionHandler(nil)
+    class func fetchWeather(for cityName: String, completion: @escaping (WeatherData?) -> Void) {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=\(WeatherDataManager.apiKey)") else {
+            completion(nil)
             return
         }
         
@@ -25,19 +24,33 @@ class WeatherDataManager {
             
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
-                print("Error with the response, unexpected status code: \(response)")
+                // we can make some meaningful logging here
+                completion(nil)
+                print("Error with the response, unexpected status code: \(String(describing: response))")
                 return
             }
             
             if let data = data,
                let weatherData = try? JSONDecoder().decode(WeatherData.self, from: data) {
-                    completionHandler(weatherData)
+                completion(weatherData)
             }
         })
         task.resume()
     }
     
+    class func fetchLocalWeather(fileName: String, fileType: String, completion: @escaping (WeatherData?) -> Void) {
+        if let path = Bundle.main.path(forResource: fileName, ofType: fileType) {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                if let weatherData = try? JSONDecoder().decode(WeatherData.self, from: data) {
+                    completion(weatherData)
+                } else {
+                    completion(nil)
+                }
+            } catch {
+                completion(nil)
+            }
+        }
+    }
+    
 }
-
-
-
