@@ -11,7 +11,7 @@ import UIKit
 class WeatherDataManager {
     static fileprivate let apiKey: String = "29d458fa0f12cf490759b24728e13689"
     class func fetchWeather(for cityName: String, completion: @escaping (WeatherData?) -> Void) {
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=\(WeatherDataManager.apiKey)") else {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&units=metric&appid=\(WeatherDataManager.apiKey)") else {
             completion(nil)
             return
         }

@@ -8,7 +8,7 @@
 "OK"                                = "OK";
 
 /// Main weather screen
-"mainScreen.title"                  = "Weather for ";
+"mainScreen.title"                  = "Weather in ";
 "mainScreen.settingsButton.title"   = "Settings";
 "mainScreen.dataSourceSwitch.title" = "Use remote data";
 
