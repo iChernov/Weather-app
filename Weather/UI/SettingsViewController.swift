@@ -65,7 +65,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func saveSettings() {
-        if var enteredCityName = cityNameField.text as? String {
+        if var enteredCityName = cityNameField.text {
             while enteredCityName.last?.isWhitespace == true {
                 enteredCityName = String(enteredCityName.dropLast())
             }

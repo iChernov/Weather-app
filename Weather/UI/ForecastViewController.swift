@@ -42,7 +42,6 @@ class ForecastViewController: UIViewController {
     
     // User interactions
     @IBAction func dataSourceSwitchAction(_ sender: UISwitch) {
-        print("switch activated: \(sender.isOn)")
         refreshData()
     }
     
@@ -54,7 +53,6 @@ class ForecastViewController: UIViewController {
     fileprivate func refreshData() {
         if dataSourceSwitch.isOn {
             if let city = SettingsStorage.loadCity() {
-                titleLabel.text = "mainScreen.title".localized + city.name
                 loadWeather(for: city.name)
             } else {
                 performSegue(withIdentifier: "settingsSegue", sender: self)
@@ -80,6 +78,7 @@ class ForecastViewController: UIViewController {
         if let data = weatherData {
             self.weatherData = data
             DispatchQueue.main.async(execute: { [weak self] in
+                self?.titleLabel.text = "mainScreen.title".localized + data.city.name
                 self?.forecastTableView.reloadData()
             })
         } else {

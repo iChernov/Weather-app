@@ -17,7 +17,26 @@ class ForecastCollectionContainerCell: UITableViewCell {
     
     func setup(using forecastDataArray: [CityData]) {
         self.forecastDataArray = forecastDataArray
+        dayLabel.text = extractWeekday(from: forecastDataArray.first)
         forecastCollectionView.reloadData()
+        setNeedsLayout()
+    }
+    
+    override func prepareForReuse() {
+        self.forecastDataArray = []
+        forecastCollectionView.reloadData()
+        super.prepareForReuse()
+    }
+    
+    private func extractWeekday(from cityData: CityData?) -> String {
+        if let data = cityData,
+           let date = data.dtTxt.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE, dd.MM"
+            return dateFormatter.string(from: date)
+        }
+        
+        return ""
     }
 }
 
