@@ -22,6 +22,8 @@
 		76052DBD25BE1EC300430471 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76052DBF25BE1EC300430471 /* Localizable.strings */; };
 		7608357825C0B6B6002979DE /* WeatherStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608357725C0B6B6002979DE /* WeatherStructs.swift */; };
 		763E5D0725C612D60042A1AE /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763E5D0625C612D60042A1AE /* UIImageView+Extension.swift */; };
+		767939D725C7601D000A79A6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767939D625C7601D000A79A6 /* ImageCache.swift */; };
+		767939DC25C76315000A79A6 /* IconLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767939DB25C76315000A79A6 /* IconLoader.swift */; };
 		76BB9BEC25C365680000B907 /* ForecastCollectionContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9BEA25C365680000B907 /* ForecastCollectionContainerCell.swift */; };
 		76BB9BFB25C36E030000B907 /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9BFA25C36E030000B907 /* ForecastCollectionViewCell.swift */; };
 		76F7BF8A25C1F13400313286 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F7BF8925C1F13400313286 /* String+Extensions.swift */; };
@@ -67,6 +69,8 @@
 		76052DBE25BE1EC300430471 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7608357725C0B6B6002979DE /* WeatherStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStructs.swift; sourceTree = "<group>"; };
 		763E5D0625C612D60042A1AE /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		767939D625C7601D000A79A6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		767939DB25C76315000A79A6 /* IconLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLoader.swift; sourceTree = "<group>"; };
 		76BB9BEA25C365680000B907 /* ForecastCollectionContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionContainerCell.swift; sourceTree = "<group>"; };
 		76BB9BFA25C36E030000B907 /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		76F7BF8925C1F13400313286 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				76052D8625BDFAAD00430471 /* WeatherDataManager.swift */,
 				76052DA925BE198E00430471 /* SettingsStorage.swift */,
+				767939DB25C76315000A79A6 /* IconLoader.swift */,
 			);
 			path = "Data Processing";
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				76F7BF9225C1F65200313286 /* LocalWeatherData.json */,
+				767939D625C7601D000A79A6 /* ImageCache.swift */,
 			);
 			path = "Local data";
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 				76BB9BEC25C365680000B907 /* ForecastCollectionContainerCell.swift in Sources */,
 				76052D5125BDF41900430471 /* AppDelegate.swift in Sources */,
 				76052D5325BDF41900430471 /* SceneDelegate.swift in Sources */,
+				767939DC25C76315000A79A6 /* IconLoader.swift in Sources */,
 				76052DAA25BE198E00430471 /* SettingsStorage.swift in Sources */,
 				76BB9BFB25C36E030000B907 /* ForecastCollectionViewCell.swift in Sources */,
 				76052D8725BDFAAD00430471 /* WeatherDataManager.swift in Sources */,
@@ -353,6 +360,7 @@
 				76052D9425BDFB2200430471 /* ForecastViewController.swift in Sources */,
 				76052DAF25BE19D800430471 /* UserCity.swift in Sources */,
 				7608357825C0B6B6002979DE /* WeatherStructs.swift in Sources */,
+				767939D725C7601D000A79A6 /* ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

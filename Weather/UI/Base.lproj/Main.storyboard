@@ -76,8 +76,8 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+23°C" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCp-xT-4Kd">
-                                                                                <rect key="frame" x="55" y="5" width="90" height="30"/>
-                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                                                <rect key="frame" x="55" y="5" width="90" height="27.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
