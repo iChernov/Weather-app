@@ -51,21 +51,6 @@ class ForecastCollectionViewCell: UICollectionViewCell {
                 break
             }
         }
-//        let imagesCache = ImageCache.shared
-//        // More complex logic could be implemented here - i.e. provide a special images loader
-//        // and Combine-based Publisher-Subscriber relation to this loader, which also would
-//        // prevent multiple loadings of the icons with the same code, and provide a publisher
-//        // to already existing loading instead. NSCache also could be moved there
-//        if let icon = imagesCache[code] {
-//            weatherIcon.image = icon
-//            weatherIcon.setNeedsLayout()
-//        } else if let url = URL(string: "https://openweathermap.org/img/wn/\(code)@2x.png") {
-//            weatherIcon.load(url: url) { image in
-//                if let loadedImage = image {
-//                    imagesCache[code] = loadedImage
-//                }
-//            }
-//        }
     }
     
     override func prepareForReuse() {
