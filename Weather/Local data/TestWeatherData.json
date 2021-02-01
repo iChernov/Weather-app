@@ -1,0 +1,54 @@
+{
+    "cod": "200",
+    "message": 0,
+    "cnt": 40,
+    "list": [{
+        "dt": 1612051200,
+        "main": {
+            "temp": 2.64,
+            "feels_like": -0.46,
+            "temp_min": 2.64,
+            "temp_max": 3.25,
+            "pressure": 998,
+            "sea_level": 998,
+            "grnd_level": 937,
+            "humidity": 96,
+            "temp_kf": -0.61
+        },
+        "weather": [{
+            "id": 500,
+            "main": "Rain",
+            "description": "light rain",
+            "icon": "10n"
+        }],
+        "clouds": {
+            "all": 100
+        },
+        "wind": {
+            "speed": 2.05,
+            "deg": 95
+        },
+        "visibility": 10000,
+        "pop": 1,
+        "rain": {
+            "3h": 2.56
+        },
+        "sys": {
+            "pod": "n"
+        },
+        "dt_txt": "2021-01-31 00:00:00"
+    }],
+    "city": {
+        "id": 2867714,
+        "name": "Munich",
+        "coord": {
+            "lat": 48.1374,
+            "lon": 11.5755
+        },
+        "country": "DE",
+        "population": 1260391,
+        "timezone": 3600,
+        "sunrise": 1611989061,
+        "sunset": 1612022970
+    }
+}

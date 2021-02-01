@@ -9,25 +9,24 @@ import XCTest
 @testable import Weather
 
 class WeatherTests: XCTestCase {
-
+    
+    var localForecast: WeatherData!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        let data = try getData(fromJSON: "TestWeatherData")
+        localForecast = try JSONDecoder().decode(WeatherData.self, from: data)
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        localForecast = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testParsing() throws {
+        XCTAssertEqual(localForecast.city.name, "Munich")
+        XCTAssertEqual(localForecast.list.first!.main.temp, 2.64)
+        XCTAssertEqual(localForecast.list.first!.weather.first!.icon, "10n")
+        XCTAssertEqual(localForecast.list.first!.dtTxt, "2021-01-31 00:00:00")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

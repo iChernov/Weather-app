@@ -21,6 +21,8 @@
 		76052DAF25BE19D800430471 /* UserCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76052DAE25BE19D800430471 /* UserCity.swift */; };
 		76052DBD25BE1EC300430471 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76052DBF25BE1EC300430471 /* Localizable.strings */; };
 		7608357825C0B6B6002979DE /* WeatherStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608357725C0B6B6002979DE /* WeatherStructs.swift */; };
+		7620B4DC25C88C2100A882A1 /* XCTestCase+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620B4DB25C88C2100A882A1 /* XCTestCase+JSON.swift */; };
+		7620B4EB25C88E2800A882A1 /* TestWeatherData.json in Resources */ = {isa = PBXBuildFile; fileRef = 7620B4E325C88D6900A882A1 /* TestWeatherData.json */; };
 		767939D725C7601D000A79A6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767939D625C7601D000A79A6 /* ImageCache.swift */; };
 		767939DC25C76315000A79A6 /* IconLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767939DB25C76315000A79A6 /* IconLoader.swift */; };
 		767939E725C76BD4000A79A6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 767939E625C76BD4000A79A6 /* README.md */; };
@@ -68,6 +70,8 @@
 		76052DAE25BE19D800430471 /* UserCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCity.swift; sourceTree = "<group>"; };
 		76052DBE25BE1EC300430471 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7608357725C0B6B6002979DE /* WeatherStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStructs.swift; sourceTree = "<group>"; };
+		7620B4DB25C88C2100A882A1 /* XCTestCase+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+JSON.swift"; sourceTree = "<group>"; };
+		7620B4E325C88D6900A882A1 /* TestWeatherData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestWeatherData.json; sourceTree = "<group>"; };
 		767939D625C7601D000A79A6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		767939DB25C76315000A79A6 /* IconLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLoader.swift; sourceTree = "<group>"; };
 		767939E625C76BD4000A79A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Weather/README.md; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		76052D6625BDF41A00430471 /* WeatherTests */ = {
 			isa = PBXGroup;
 			children = (
+				7620B4DB25C88C2100A882A1 /* XCTestCase+JSON.swift */,
 				76052D6725BDF41A00430471 /* WeatherTests.swift */,
 				76052D6925BDF41A00430471 /* Info.plist */,
 			);
@@ -211,6 +216,7 @@
 			children = (
 				76F7BF9225C1F65200313286 /* LocalWeatherData.json */,
 				767939D625C7601D000A79A6 /* ImageCache.swift */,
+				7620B4E325C88D6900A882A1 /* TestWeatherData.json */,
 			);
 			path = "Local data";
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7620B4EB25C88E2800A882A1 /* TestWeatherData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7620B4DC25C88C2100A882A1 /* XCTestCase+JSON.swift in Sources */,
 				76052D6825BDF41A00430471 /* WeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8NW6SD29Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -567,7 +575,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8NW6SD29Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Weather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

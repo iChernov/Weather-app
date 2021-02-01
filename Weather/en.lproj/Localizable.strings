@@ -19,4 +19,4 @@
 
 /// Errors
 "generalFailure.title"              = "Weather loading failed";
-"generalFailure.message"            = "Please check your connection or try again later";
+"generalFailure.message"            = "Please check that openweathermap API key is provided, also check your internet connection and try again later";
