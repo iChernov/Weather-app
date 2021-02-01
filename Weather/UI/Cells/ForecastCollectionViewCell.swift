@@ -17,7 +17,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        containerView.layer.borderColor = UIColor.systemBlue.cgColor
+        containerView.layer.borderColor = UIColor.systemGray5.cgColor
         containerView.layer.borderWidth = 1.0
         containerView.layer.cornerRadius = 2.0
     }
@@ -47,7 +47,8 @@ class ForecastCollectionViewCell: UICollectionViewCell {
                 DispatchQueue.main.async {
                     self?.weatherIcon.image = icon
                 }
-            case .failure(_):
+            case .failure(let error):
+                debugPrint(error)
                 break
             }
         }

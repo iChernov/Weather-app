@@ -21,6 +21,7 @@ class ForecastViewController: UIViewController {
     
     // internal variables
     private var weatherData: WeatherData?
+    private var savedSwitchState: Bool = false // default dataSourceSwitch state is off
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class ForecastViewController: UIViewController {
     
     // User interactions
     @IBAction func dataSourceSwitchAction(_ sender: UISwitch) {
+        savedSwitchState = !sender.isOn
+        settingsButton.isHidden = sender.isOn
         refreshData()
     }
     
@@ -52,13 +55,13 @@ class ForecastViewController: UIViewController {
     // Internal methods
     fileprivate func refreshData() {
         if dataSourceSwitch.isOn {
+            loadLocalWeather()
+        } else {
             if let city = SettingsStorage.loadCity() {
                 loadWeather(for: city.name)
             } else {
                 performSegue(withIdentifier: "settingsSegue", sender: self)
             }
-        } else {
-            loadLocalWeather()
         }
     }
     
@@ -86,7 +89,9 @@ class ForecastViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
             
             DispatchQueue.main.async(execute: { [weak self] in
-                self?.present(alert, animated: true)
+                guard let self = self else { return }
+                self.present(alert, animated: true)
+                self.dataSourceSwitch.isOn = self.savedSwitchState
             })
         }
     }

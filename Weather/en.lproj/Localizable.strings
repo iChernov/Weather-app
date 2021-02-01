@@ -9,12 +9,12 @@
 
 /// Main weather screen
 "mainScreen.title"                  = "Weather in ";
-"mainScreen.settingsButton.title"   = "Settings";
-"mainScreen.dataSourceSwitch.title" = "Use remote data";
+"mainScreen.settingsButton.title"   = "Change city";
+"mainScreen.dataSourceSwitch.title" = "Use local data";
 
 /// Settings screen
 "settings.title"                    = "Settings";
-"settings.explanation"              = "To see the weather for a concrete city - please enter the city name in the text field below. Please check that city name is entered without spelling mistakes!";
+"settings.explanation"              = "To see the weather for a concrete city - please enter the city name in the text field below.";
 "settings.submitButton.title"       = "Submit";
 
 /// Errors
