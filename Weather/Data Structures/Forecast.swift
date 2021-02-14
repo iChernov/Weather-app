@@ -35,7 +35,7 @@ class Forecast {
     }
 }
 
-struct ForecastPoint {
+struct ForecastPoint: Equatable {
     let preciseDate: Date
     let temperature: Double
     let iconCode: String?
