@@ -31,6 +31,11 @@ class SettingsViewController: UIViewController {
         submitButton.layer.cornerRadius = 3.0
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.reloadCity()
+    }
+    
     // User interactions
     @IBAction func submitSettings(_ sender: Any) {
         saveSettings()
@@ -59,7 +64,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func loadSettings() {
-        if let city = SettingsStorage.loadCity() {
+        if let city = SettingsStorage.getSavedCity() {
             cityNameField.text = city.name
         }
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 class SettingsStorage {
-    class func loadCity() -> UserCity? {
+    class func getSavedCity() -> UserCity? {
         let defaults = UserDefaults.standard
         if let cityData = defaults.object(forKey: "SavedCity") as? Data {
             let decoder = JSONDecoder()

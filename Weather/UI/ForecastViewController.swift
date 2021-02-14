@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
+enum LoadingErrorType {
+    case noAPIKey
+    case noCityEntered
+    case networkError
+}
+
 class ForecastViewController: UIViewController {
-    // number of forecast data points per day, as defined by openweathermap API
-    let pointsPerDay = 8
-    
     // UI
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dataSourceSwitchLabel: UILabel!
@@ -20,8 +23,10 @@ class ForecastViewController: UIViewController {
     @IBOutlet weak var forecastTableView: UITableView!
     
     // internal variables
-    private var weatherData: WeatherData?
+    private var dataProvider = ForecastDataProvider()
+    private var forecast: Forecast?
     private var savedSwitchState: Bool = false // default dataSourceSwitch state is off
+    private var settingsWereShown: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,47 +58,43 @@ class ForecastViewController: UIViewController {
     }
 
     // Internal methods
-    fileprivate func refreshData() {
-        if dataSourceSwitch.isOn {
-            loadLocalWeather()
-        } else {
-            if let city = SettingsStorage.loadCity() {
-                loadWeather(for: city.name)
-            } else {
+    private func refreshData() {
+        let isLocal = dataSourceSwitch.isOn
+        if !isLocal && SettingsStorage.getSavedCity() == nil {
+            if !settingsWereShown {
                 performSegue(withIdentifier: "settingsSegue", sender: self)
+                settingsWereShown = true
+            } else {
+                presentError(.noCityEntered)
+            }
+        } else {
+            dataProvider.loadForecastData(isLocal: isLocal) { [weak self] forecast in
+                self?.visualise(forecast)
             }
         }
     }
     
-    fileprivate func loadLocalWeather() {
-        WeatherDataManager.fetchLocalWeather(fileName: "LocalWeatherData", fileType: "json") { [weak self] weatherData in
-            self?.visualise(weatherData)
-        }
-    }
-    
-    fileprivate func loadWeather(for cityName: String) {
-        WeatherDataManager.fetchWeather(for: cityName) { [weak self] weatherData in
-            self?.visualise(weatherData)
-        }
-    }
-    
-    fileprivate func visualise(_ weatherData: WeatherData?) {
-        if let data = weatherData {
-            self.weatherData = data
+    private func visualise(_ forecast: Forecast?) {
+        if let forecast = forecast {
+            self.forecast = forecast
             DispatchQueue.main.async(execute: { [weak self] in
-                self?.titleLabel.text = "mainScreen.title".localized + data.city.name
+                self?.titleLabel.text = "mainScreen.title".localized + forecast.cityName
                 self?.forecastTableView.reloadData()
             })
         } else {
-            let alert = UIAlertController(title: "generalFailure.title".localized, message: "generalFailure.message".localized, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
-            
-            DispatchQueue.main.async(execute: { [weak self] in
-                guard let self = self else { return }
-                self.present(alert, animated: true)
-                self.dataSourceSwitch.isOn = self.savedSwitchState
-            })
+            presentError(.networkError)
         }
+    }
+    
+    private func presentError(_ errorType: LoadingErrorType) {
+        let alert = UIAlertController(title: "error.\(errorType).title".localized, message: "error.\(errorType).message".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+        
+        DispatchQueue.main.async(execute: { [weak self] in
+            guard let self = self else { return }
+            self.present(alert, animated: true)
+            self.dataSourceSwitch.isOn = self.savedSwitchState
+        })
     }
 }
 
@@ -105,16 +106,16 @@ extension ForecastViewController: CityPresenting {
 
 extension ForecastViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let data = weatherData else { return 0 }
-        return data.cnt/pointsPerDay // by default it should be 5
+        guard let forecast = self.forecast else { return 0 }
+        return forecast.days.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let dayIndex = indexPath.row
-        guard let weatherData = weatherData else { return UITableViewCell() }
-        let forecastDataForDay = Array(weatherData.list[pointsPerDay*dayIndex...pointsPerDay*(dayIndex+1)-1])
+        guard let forecast = self.forecast else { return UITableViewCell() }
+        let day = forecast.days[indexPath.row]
+        let forecastPoints = forecast.daysForecasts[day] ?? []
         if let forecastCell = tableView.dequeueReusableCell(withIdentifier: ForecastCollectionContainerCell.identifier) as? ForecastCollectionContainerCell {
-            forecastCell.setup(using: forecastDataForDay)
+            forecastCell.setup(using: forecastPoints, day: day)
             return forecastCell
         } else {
             return UITableViewCell()

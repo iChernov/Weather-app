@@ -18,5 +18,12 @@
 "settings.submitButton.title"       = "Submit";
 
 /// Errors
-"generalFailure.title"              = "Weather loading failed";
-"generalFailure.message"            = "Please check that openweathermap API key is provided, also check your internet connection and try again later";
+
+"error.noAPIKey.title"              = "Weather loading failed";
+"error.noAPIKey.message"            = "Please check that openweathermap API key is provided";
+
+"error.noCityEntered.title"         = "Cannot load weather data";
+"error.noCityEntered.message"       = "Ops! You forgot to enter city name";
+
+"error.networkError.title"          = "Weather loading failed";
+"error.networkError.message"        = "Please check your internet connection and try again later";

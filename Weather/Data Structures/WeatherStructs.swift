@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Documentation - https://openweathermap.org/forecast5
 // MARK: - WeatherData
 struct WeatherData: Codable {
     let cod: String

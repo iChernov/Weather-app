@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class WeatherDataManager {
-    static fileprivate let apiKey: String = "INSERT YOUR API KEY HERE"
+    static fileprivate let apiKey: String = "5452871acf042b9cc2c36467611209f6"
     class func fetchWeather(for cityName: String, completion: @escaping (WeatherData?) -> Void) {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&units=metric&appid=\(WeatherDataManager.apiKey)") else {
             completion(nil)

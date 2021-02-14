@@ -22,26 +22,21 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 2.0
     }
     
-    func setup(with data: CityData) {
+    func setup(with point: ForecastPoint) {
         // we can set a precision of temperature here,
         // i.e. Usually decimals after comma are not presented.
-        let formattedTemp = String(format: "%.1f", data.main.temp)
-        let prefix = data.main.temp > 0 ? "+" : ""
-        temperatureLabel.text = prefix + formattedTemp + "°C"
+        let formattedTemp = String(format: "%.1f", point.temperature)
+        let prefix = point.temperature > 0 ? "+" : ""
         
-        if let date = data.dtTxt.toDate(dateFormat: "yyyy-MM-dd HH:mm:ss") {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy\nHH:mm"
-            dateAndTimeLabel.text = dateFormatter.string(from: date).replacingOccurrences(of: " ", with: "\n")
-        }
-        loadImage(data.weather.first?.icon)
+        temperatureLabel.text = prefix + formattedTemp + "°C"
+        dateAndTimeLabel.text = DateFormattingHelper.getSimpleDateString(from: point.preciseDate).replacingOccurrences(of: " ", with: "\n")
+        requestIcon(point.iconCode)
         setNeedsLayout()
     }
     
-    private func loadImage(_ imageCode: String?) {
+    private func requestIcon(_ imageCode: String?) {
         guard let code = imageCode else { return }
         IconLoader.shared.loadWeatherIcon(code) { [weak self] result in
-            
             switch result {
             case .success(let icon):
                 DispatchQueue.main.async {
